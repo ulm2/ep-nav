@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Adventure Guide</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Navigation Adventure Guide for Special Needs</title>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -241,7 +242,7 @@
             margin: 10px 0;
         }
     
-        /* --- El Paso Explorer Game styles --- */
+        /* --- City-Agnostic Explorer Game styles --- */
         .game-header {
             display: flex;
             flex-wrap: wrap;
@@ -348,597 +349,169 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🧭 Navigation Adventure Guide 🗺️</h1>
-        <p class="subtitle">Learn to find your way like an explorer!</p>
-        
-        <div class="section">
-            <h2><span class="icon">🧭</span> Using a Compass</h2>
-            <p><strong>A compass always points North!</strong> The red end of the needle shows you where North is.</p>
-            
-            <div class="compass-demo">
-                <div class="compass">
-                    <div class="compass-needle" id="needle"></div>
-                    <div class="compass-center"></div>
-                    <div class="cardinal n">N</div>
-                    <div class="cardinal e">E</div>
-                    <div class="cardinal s">S</div>
-                    <div class="cardinal w">W</div>
-                </div>
-                <button onclick="rotateCompass()">Turn Around!</button>
-                <button onclick="resetCompass()">Face North</button>
-            </div>
-            
-            <div class="warning-box">
-                <strong>⚠️ IMPORTANT WARNING!</strong>
-                <p>Keep metal objects away from your compass! Things like keys, phones, magnets, belt buckles, and metal jewelry can make the needle point the wrong way. Always check your compass is at least 2 feet away from metal objects!</p>
-            </div>
-            
-            <p><strong>Basic Directions:</strong></p>
-            <ul>
-                <li><strong>North (N)</strong> - Top of most maps</li>
-                <li><strong>East (E)</strong> - Right side (where the sun rises)</li>
-                <li><strong>South (S)</strong> - Bottom of most maps</li>
-                <li><strong>West (W)</strong> - Left side (where the sun sets)</li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2><span class="icon">🗺️</span> Reading Paper Maps</h2>
-            
-            <div class="interactive-box" onclick="toggleContent('map1')">
-                <strong>📍 Click to learn: What do the symbols mean?</strong>
-                <div id="map1" class="hidden-content">
-                    <div class="map-legend">
-                        <div class="legend-item">
-                            <div class="legend-symbol">🏔️</div>
-                            <div>Mountains / Hills</div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-symbol">🌲</div>
-                            <div>Forest / Trees</div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-symbol">💧</div>
-                            <div>Water / Rivers</div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-symbol">🛣️</div>
-                            <div>Roads</div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-symbol">🏠</div>
-                            <div>Buildings</div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-symbol">⛺</div>
-                            <div>Campsites</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="interactive-box" onclick="toggleContent('map2')">
-                <strong>📏 Click to learn: Understanding Scale</strong>
-                <div id="map2" class="hidden-content">
-                    <p>The scale tells you how distances on the map relate to real distances.</p>
-                    <p><strong>Example:</strong> If the scale says "1 inch = 1 mile", then 1 inch on your map equals 1 mile in real life!</p>
-                    <p>Look for the scale bar on your map (usually at the bottom) to measure how far things really are.</p>
-                </div>
-            </div>
-            
-            <div class="interactive-box" onclick="toggleContent('map3')">
-                <strong>🧭 Click to learn: Orienting Your Map</strong>
-                <div id="map3" class="hidden-content">
-                    <p><strong>Step 1:</strong> Find the North arrow on your map (usually points up)</p>
-                    <p><strong>Step 2:</strong> Use your compass to find which way is North</p>
-                    <p><strong>Step 3:</strong> Turn your map so the North arrow points the same way as your compass needle</p>
-                    <p><strong>Now your map matches the real world around you!</strong></p>
-                </div>
-            </div>
-        </div>
-        
-        
-        <div class="section">
-            <h2><span class="icon">📱</span> Using a Lensatic Compass with Maps & Apps</h2>
-            <p><strong>Use this section while a parent holds the phone or atlas.</strong> The parent reads from the map app or book, and you use the lensatic compass and paper map!</p>
-            
-            <div class="interactive-box" onclick="toggleContent('mapapp1')">
-                <strong>👨‍👩‍👧 Activity: Parent + Kid Bearing Team</strong>
-                <div id="mapapp1" class="hidden-content">
-                    <p><strong>Parent uses a map app, kid uses the lensatic compass.</strong></p>
-                    <div style="background: white; padding: 15px; border-radius: 8px; margin: 10px 0;">
-                        <p><strong>Setup:</strong></p>
-                        <ol>
-                            <li>Go to a park, playground, or open area.</li>
-                            <li>Parent opens a map app and chooses a nearby object (bench, tree, playground, statue).</li>
-                            <li>Parent taps the starting point (you) and the object to read the <strong>bearing</strong> (direction in degrees).</li>
-                        </ol>
-                        <p style="margin-top: 15px;"><strong>How to play:</strong></p>
-                        <ol>
-                            <li>Parent says: "The bench is at <strong>60°</strong> from where we are."</li>
-                            <li>Kid turns the lensatic compass bezel to 60°, lines up the needle with North, and faces that direction.</li>
-                            <li>Kid walks that direction while counting steps.</li>
-                            <li>When kid thinks they’re close, they look up and try to spot the object.</li>
-                            <li>Switch roles: Kid picks a new object on the map and gives the bearing to the parent!</li>
-                        </ol>
-                    </div>
-                    <div style="background: #fff3cd; padding: 10px; border-radius: 8px; margin-top: 10px;">
-                        <strong>💡 What you might discover:</strong> Phone compasses can be less accurate because of magnetic interference from the phone itself. Lensatic compasses are usually more reliable, especially when you keep them away from metal.</div>
-                </div>
-            </div>
-            
-            <div class="interactive-box" onclick="toggleContent('mapapp2')">
-                <strong>🎯 Activity: Bearing Relay Race</strong>
-                <div id="mapapp2" class="hidden-content">
-                    <p><strong>Team challenge: Parent gives bearings from the map app, kid navigates with the lensatic compass!</strong></p>
-                    <div style="background: white; padding: 15px; border-radius: 8px; margin: 10px 0;">
-                        <p><strong>Setup:</strong></p>
-                        <ol>
-                            <li>Go to a park, playground, or open area.</li>
-                            <li>Parent secretly hides 5 small objects (coins, toys, treats).</li>
-                            <li>Parent marks each hiding spot on their map app or on a printed map.</li>
-                            <li>Parent calculates the bearing to each spot from the starting point.</li>
-                        </ol>
-                        <p style="margin-top: 15px;"><strong>The Race:</strong></p>
-                        <ol>
-                            <li>Parent says: "Object 1 is at bearing <strong>80°</strong>, about <strong>150 steps</strong>."</li>
-                            <li>Kid sets compass to 80° and walks that direction counting steps.</li>
-                            <li>When kid thinks they're close, they search for the object.</li>
-                            <li>When found, parent gives the next bearing!</li>
-                            <li>Race against the clock or try to find all objects using the fewest total steps.</li>
-                        </ol>
-                        <p style="margin-top: 15px;"><strong>Advanced version:</strong> Parent only gives bearings, no step counts. Kid has to use the map app or scale bar on a paper map to estimate distance before starting!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="interactive-box" onclick="toggleContent('mapapp3')">
-                <strong>📖 Activity: Create Your Own Atlas Page</strong>
-                <div id="mapapp3" class="hidden-content">
-                    <p><strong>Make a detailed map of your neighborhood like a real atlas!</strong></p>
-                    <ol>
-                        <li><strong>Pick your area:</strong> Maybe the 4-block area around your home.</li>
-                        <li><strong>Walk the area with a parent:</strong>
-                            <ul>
-                                <li>Use the lensatic compass to record the direction (bearing) of major streets.</li>
-                                <li>Use a map app or measuring tape to get approximate distances.</li>
-                                <li>Take photos of interesting landmarks.</li>
-                            </ul>
-                        </li>
-                        <li><strong>At home, create your map page:</strong>
-                            <ul>
-                                <li>Draw streets to scale (use map or app for measurements).</li>
-                                <li>Add a compass rose showing North.</li>
-                                <li>Mark important places: home, friends' houses, parks, stores.</li>
-                                <li>Create a legend with symbols.</li>
-                                <li>Add fun notes: "Best climbing tree at <strong>45°</strong> from this corner."</li>
-                            </ul>
-                        </li>
-                        <li><strong>Test your atlas page:</strong> Can a friend or sibling use it to navigate to a specific place using just compass bearings from your map?</li>
-                    </ol>
-                    <div style="background: #e3f2fd; padding: 10px; border-radius: 8px; margin-top: 10px;">
-                        <strong>🎨 Make it special:</strong> Add color, drawings of buildings, and mark where you've seen interesting animals or plants. This becomes YOUR personal atlas page!</div>
-                </div>
-            </div>
-            
-            <div class="interactive-box" onclick="toggleContent('mapapp4')">
-                <strong>🌍 Activity: Google Earth + Compass Adventure</strong>
-                <div id="mapapp4" class="hidden-content">
-                    <p><strong>Plan a REAL adventure using satellite views and your lensatic compass!</strong></p>
-                    <div style="background: white; padding: 15px; border-radius: 8px; margin: 10px 0;">
-                        <p><strong>Phase 1: Digital Planning</strong></p>
-                        <ol>
-                            <li>With a parent, open Google Earth or satellite view in a map app.</li>
-                            <li>Find a local trail, park, or hiking area.</li>
-                            <li>Plan a route from Point A to Point B.</li>
-                            <li>Measure the bearing for each leg of the journey.</li>
-                            <li>Measure distances between turns.</li>
-                            <li>Print or sketch the route with bearings written down.</li>
-                        </ol>
-                        <p style="margin-top: 15px;"><strong>Phase 2: Real World Adventure</strong></p>
-                        <ol>
-                            <li>Bring your notes, lensatic compass, paper map (if you have one), and this device.</li>
-                            <li>Start at Point A.</li>
-                            <li>Set your first bearing and walk it.</li>
-                            <li>At each waypoint, check your position on the map app with your parent.</li>
-                            <li>Record how accurate your compass navigation was!</li>
-                        </ol>
-                        <p style="margin-top: 15px;"><strong>Challenge mode:</strong> Can you complete the route using ONLY your compass and notes, only checking the app at the end?</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="interactive-box" onclick="toggleContent('mapapp5')">
-                <strong>❓ Activity: Lensatic Compass Question Corner</strong>
-                <div id="mapapp5" class="hidden-content">
-                    <p><strong>Kids often wonder what all the parts of a lensatic compass are for.</strong></p>
-                    <ul>
-                        <li><strong>Sighting wire and lens:</strong> Help you line up a faraway object and read its exact bearing.</li>
-                        <li><strong>Bezel ring and clicks:</strong> Let you set a direction and keep it, even when you look away.</li>
-                        <li><strong>Luminous dots:</strong> Glow in the dark so you can still follow a bearing at night.</li>
-                        <li><strong>Index line:</strong> The line where you read the degrees you’re traveling.</li>
-                        <li><strong>Map use:</strong> Place the compass on a paper map to measure the bearing from your house to a park, check which way a trail is heading, or turn the map until the needle matches the map’s North arrow.</li>
-                    </ul>
-                    <p><em>Parent tip:</em> Let kids ask “Why does it do that?” and explore the answer together using the compass and map in front of you.</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="section">
-            <h2><span class="icon">☀️</span> Using the Sun</h2>
-            <p>The sun is a natural compass!</p>
-            <ul>
-                <li><strong>Morning:</strong> The sun rises in the <strong>East</strong></li>
-                <li><strong>Noon:</strong> The sun is in the <strong>South</strong> (in Northern Hemisphere)</li>
-                <li><strong>Evening:</strong> The sun sets in the <strong>West</strong></li>
-            </ul>
-            <p><em>Remember: The sun moves from East to West across the sky during the day!</em></p>
-        </div>
-        
-        <div class="section">
-            
-<img src="data:image/jpeg;base64,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"
-     alt="Big Dipper, Little Dipper, and Polaris diagram"
-     style="width:100%;max-width:500px;display:block;margin:20px auto;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.4);">
-
-            <h2><span class="icon">⭐</span> Finding North with Stars</h2>
-            
-            <div class="stars-demo">
-                <div style="position: relative; z-index: 1;">
-                    <h3 style="margin-bottom: 20px;">The Big Dipper & Little Dipper</h3>
-                    
-                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
-                        <div>
-                            <h4>Big Dipper</h4>
-                            <div class="dipper" style="transform: scale(1.2);">
-                                <div class="star-dot" style="top: 100px; left: 20px; background: white; box-shadow: 0 0 10px white;"></div>
-                                <div class="star-dot" style="top: 80px; left: 40px; background: white; box-shadow: 0 0 10px white;"></div>
-                                <div class="star-dot" style="top: 70px; left: 70px; background: white; box-shadow: 0 0 10px white;"></div>
-                                <div class="star-dot" style="top: 80px; left: 100px; background: yellow; box-shadow: 0 0 15px yellow;" id="pointer1"></div>
-                                <div class="star-dot" style="top: 40px; left: 110px; background: yellow; box-shadow: 0 0 15px yellow;" id="pointer2"></div>
-                                <div class="star-dot" style="top: 20px; left: 90px; background: white; box-shadow: 0 0 10px white;"></div>
-                                <div class="star-dot" style="top: 10px; left: 60px; background: white; box-shadow: 0 0 10px white;"></div>
-                            </div>
-                            <p style="font-size: 0.9em; margin-top: 10px;">The two yellow stars are the "pointer stars"</p>
-                        </div>
-                        
-                        <div>
-                            <h4>Little Dipper</h4>
-                            <div class="dipper" style="transform: scale(1.2);">
-                                <div class="star-dot" style="top: 10px; left: 70px; background: gold; box-shadow: 0 0 20px gold; width: 16px; height: 16px;" id="polaris"></div>
-                                <div class="star-dot" style="top: 30px; left: 90px; background: white; box-shadow: 0 0 10px white;"></div>
-                                <div class="star-dot" style="top: 50px; left: 100px; background: white; box-shadow: 0 0 10px white;"></div>
-                                <div class="star-dot" style="top: 70px; left: 90px; background: white; box-shadow: 0 0 10px white;"></div>
-                                <div class="star-dot" style="top: 80px; left: 60px; background: white; box-shadow: 0 0 10px white;"></div>
-                                <div class="star-dot" style="top: 70px; left: 30px; background: white; box-shadow: 0 0 10px white;"></div>
-                                <div class="star-dot" style="top: 50px; left: 20px; background: white; box-shadow: 0 0 10px white;"></div>
-                            </div>
-                            <p style="font-size: 0.9em; margin-top: 10px;"><strong>Polaris (North Star)</strong> - the bright gold star!</p>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 30px; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
-                        <p><strong>How to Find Polaris (North Star):</strong></p>
-                        <ol style="text-align: left; display: inline-block; margin-top: 10px;">
-                            <li>Find the Big Dipper in the night sky</li>
-                            <li>Look at the two stars at the end of the "cup" (the pointer stars)</li>
-                            <li>Draw an imaginary line through these two stars</li>
-                            <li>Follow that line about 5 times the distance between the pointer stars</li>
-                            <li>You'll find Polaris, the North Star! It's at the end of the Little Dipper's handle</li>
-                            <li><strong>Polaris always points North!</strong></li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2><span class="icon">🚶</span> Scale Challenge Activities</h2>
-            <p><strong>Let's test if your map scale matches real walking distances!</strong></p>
-            
-            <div class="interactive-box" onclick="toggleContent('activity1')">
-                <strong>🎯 Activity 1: The 100-Step Challenge</strong>
-                <div id="activity1" class="hidden-content">
-                    <p><strong>What you'll need:</strong> Your map, ruler, compass, and this phone/tablet</p>
-                    <ol>
-                        <li>Mark your starting point on the map</li>
-                        <li>Pick a landmark you can see (tree, mailbox, bench)</li>
-                        <li>Measure the distance on your map using the scale</li>
-                        <li>Walk to it counting your steps</li>
-                        <li>Compare: Did the map distance match your walked distance?</li>
-                    </ol>
-                    <p><em>Parent tip: Hide a small reward at the landmark before you start!</em></p>
-                    <div style="background: white; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                        <strong>Track your results:</strong><br>
-                        Map says: _____ feet/meters<br>
-                        You walked: _____ steps<br>
-                        Time it took: _____ minutes
-                    </div>
-                </div>
-            </div>
-            
-            <div class="interactive-box" onclick="toggleContent('activity2')">
-                <strong>🗺️ Activity 2: Three-Point Treasure Hunt</strong>
-                <div id="activity2" class="hidden-content">
-                    <p><strong>Create a mini adventure with 3 checkpoints!</strong></p>
-                    <ol>
-                        <li>Parents: Before the walk, pick 3 locations and mark them on the map</li>
-                        <li>Hide small "treasures" or clues at each spot</li>
-                        <li>Kids: Use compass to navigate to each point</li>
-                        <li>At each checkpoint, record:
-                            <ul>
-                                <li>What the map distance said: _____ </li>
-                                <li>How many steps you took: _____ </li>
-                                <li>What direction you walked: _____ </li>
-                            </ul>
-                        </li>
-                        <li>After all 3 points, compare: Were your map measurements accurate?</li>
-                    </ol>
-                    <p><strong>Make it harder:</strong> Only use compass directions, not street names!</p>
-                </div>
-            </div>
-            
-            <div class="interactive-box" onclick="toggleContent('activity3')">
-                <strong>📱 Activity 3: Map vs App Challenge</strong>
-                <div id="activity3" class="hidden-content">
-                    <p><strong>Compare old-school navigation with modern tech!</strong></p>
-                    <p><strong>Route 1 - Using Paper Map:</strong></p>
-                    <ul>
-                        <li>Plan a route on paper map from point A to B</li>
-                        <li>Use compass to navigate</li>
-                        <li>Count your steps and time yourself</li>
-                        <li>Write down what you notice along the way</li>
-                    </ul>
-                    <p><strong>Route 2 - Using Phone Map:</strong></p>
-                    <ul>
-                        <li>Walk the same route using a map app</li>
-                        <li>Record the app's distance measurement</li>
-                        <li>Compare time and experience</li>
-                    </ul>
-                    <div style="background: #fff3cd; padding: 10px; border-radius: 8px; margin-top: 10px;">
-                        <strong>Discussion questions:</strong><br>
-                        • Which method felt more like an adventure?<br>
-                        • Which distances were more accurate?<br>
-                        • What would you do if your phone battery died?<br>
-                        • Did you notice different things with each method?
-                    </div>
-                </div>
-            </div>
-            
-            <div class="interactive-box" onclick="toggleContent('activity4')">
-                <strong>🎲 Activity 4: Mystery Distance Game</strong>
-                <div id="activity4" class="hidden-content">
-                    <p><strong>Can you guess distances without measuring first?</strong></p>
-                    <ol>
-                        <li>Parent picks a visible landmark</li>
-                        <li>Kid guesses how far away it is: _____ feet/meters</li>
-                        <li>Measure it on the map: _____ feet/meters</li>
-                        <li>Walk to it counting steps: _____ steps</li>
-                        <li>Calculate actual distance using your step length</li>
-                    </ol>
-                    <p><strong>Bonus:</strong> After practicing, kids usually get really good at estimating distances!</p>
-                    <div style="background: white; padding: 10px; border-radius: 8px; margin-top: 10px;">
-                        <strong>Your step length:</strong><br>
-                        Measure 10 steps, divide by 10 = _____ feet per step<br>
-                        <em>(This helps convert steps to real distance!)</em>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="background: white; padding: 15px; border-radius: 10px; margin-top: 20px; border: 2px dashed #667eea;">
-                <strong>📝 Parent's Planning Notes:</strong>
-                <p style="margin: 10px 0;">Use these spaces to plan your activities ahead of time:</p>
-                <p>Checkpoint 1 location: _________________</p>
-                <p>Checkpoint 2 location: _________________</p>
-                <p>Checkpoint 3 location: _________________</p>
-                <p>Hidden rewards: _________________</p>
-                <p>Estimated total walking distance: _________________</p>
-            </div>
-        </div>
-        
-        <div class="section" style="background: #e8f5e9; border-left-color: #4caf50;">
-            <h2><span class="icon">✅</span> Quick Navigation Checklist</h2>
-            <ul style="list-style: none; margin-left: 0;">
-                <li>✓ Keep metal away from your compass (2+ feet)</li>
-                <li>✓ Match your map's North arrow to your compass</li>
-                <li>✓ Use the sun: Rises East, Sets West</li>
-                <li>✓ At night: Find the Big Dipper → Follow pointer stars → Find Polaris (North)</li>
-                <li>✓ Check your map's legend to understand symbols</li>
-                <li>✓ Use the scale to measure real distances</li>
-                <li>✓ Practice taking bearings with your lensatic compass</li>
-                <li>✓ Combine paper maps, atlases, and digital tools with your compass</li>
-            </ul>
-        </div>
-    </div>
-    
-        <div class="section" id="elpaso-game">
-            <h2><span class="icon">🌵</span> El Paso Explorer Game Mode</h2>
-            <p>Turn navigation into an adventure! Play with family or solo. Answer questions, solve riddles, and unlock jokes + badges.</p>
-
-            <div class="game-header">
-                <div class="score-pill">🏆 Points: <span id="ep_points">0</span></div>
-
-                <div class="mode-pill">
-                    <span>Mode:</span>
-                    <label><input type="radio" name="ep_mode" value="family" checked onchange="setMode(this.value)"> 👨‍👩‍👧 Family Team</label>
-                    <label><input type="radio" name="ep_mode" value="solo" onchange="setMode(this.value)"> 🧒 Solo</label>
-                </div>
-
-                <div class="reset-row">
-                    <button onclick="showAllAnswersHint()">Hint (kid-safe)</button>
-                    <button onclick="resetElPasoGame()">Reset Game</button>
-                </div>
-            </div>
-
-            <div class="small-note">
-                <strong>🧭 Optional Compass Challenge:</strong>
-                <div class="tiny">Have a parent pick a safe object (tree/bench) and say a bearing (like 60°). Kid uses the lensatic compass to face that direction, then reads the next clue!</div>
-            </div>
-
-            <h3 style="margin-top:15px;">🎖️ Badge Board</h3>
-            <div class="badge-board" id="ep_badges"></div>
-
-            <!-- STOP 1 -->
-            <div class="interactive-box" style="cursor: default;">
-                <strong>🏔️ Stop 1: Franklin Mountains</strong>
-                <p class="tiny">History/Culture: One of the biggest urban mountain parks in the U.S. — right inside El Paso.</p>
-
-                <div class="choice-grid">
-                    <button class="choice-btn" onclick="answerStop('stop1', true)">✅ One of the largest urban parks in the U.S.</button>
-                    <button class="choice-btn" onclick="answerStop('stop1', false)">🌋 A volcano</button>
-                    <button class="choice-btn" onclick="answerStop('stop1', false)">🏝️ A sand dune</button>
-                </div>
-
-                <button onclick="toggleContent('ep_riddle1')">Reveal Riddle</button>
-                <div id="ep_riddle1" class="hidden-content">
-                    <div class="reward-box">
-                        <strong>🧩 Riddle:</strong>
-                        <p>I rise above the desert floor, with rocky trails and views galore. In Texas I stand tall and proud, above the city, near the clouds. What am I?</p>
-                        <p><em>Answer:</em> The Franklin Mountains!</p>
-                    </div>
-                </div>
-
-                <div id="ep_reward_stop1" class="hidden-content">
-                    <div class="reward-box good">
-                        <strong>🎁 Reward Joke:</strong>
-                        <p>Why don’t the Franklin Mountains ever get lost? Because they always <em>peak</em> in the right direction! 😄</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- STOP 2 -->
-            <div class="interactive-box" style="cursor: default;">
-                <strong>🌊 Stop 2: Rio Grande</strong>
-                <p class="tiny">History/Culture: A famous river that helped shape life, travel, and the borderlands.</p>
-
-                <div class="choice-grid">
-                    <button class="choice-btn" onclick="answerStop('stop2', true)">✅ “Rio Grande” means “Big River”</button>
-                    <button class="choice-btn" onclick="answerStop('stop2', false)">🚀 “Rio Grande” means “Fast River”</button>
-                    <button class="choice-btn" onclick="answerStop('stop2', false)">💙 “Rio Grande” means “Blue River”</button>
-                </div>
-
-                <button onclick="toggleContent('ep_riddle2')">Reveal Riddle</button>
-                <div id="ep_riddle2" class="hidden-content">
-                    <div class="reward-box">
-                        <strong>🧩 Riddle:</strong>
-                        <p>I separate two lands but flow as one, I sparkle bright in desert sun. I’ve seen traders and explorers too, and I still keep flowing right past you. Who am I?</p>
-                        <p><em>Answer:</em> The Rio Grande!</p>
-                    </div>
-                </div>
-
-                <div id="ep_reward_stop2" class="hidden-content">
-                    <div class="reward-box good">
-                        <strong>🎁 Reward Joke:</strong>
-                        <p>Why did the river win the race? Because it had a <em>current</em> advantage! 🌊</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- STOP 3 -->
-            <div class="interactive-box" style="cursor: default;">
-                <strong>⛪ Stop 3: Mission Trail (Ysleta / Socorro / San Elizario)</strong>
-                <p class="tiny">History/Culture: Some of the oldest communities in Texas live along these historic missions.</p>
-
-                <div class="choice-grid">
-                    <button class="choice-btn" onclick="answerStop('stop3', true)">✅ Ysleta Mission is the oldest mission in Texas</button>
-                    <button class="choice-btn" onclick="answerStop('stop3', false)">🏰 It was built as a castle</button>
-                    <button class="choice-btn" onclick="answerStop('stop3', false)">🛰️ It started as a space station</button>
-                </div>
-
-                <button onclick="toggleContent('ep_riddle3')">Reveal Riddle</button>
-                <div id="ep_riddle3" class="hidden-content">
-                    <div class="reward-box">
-                        <strong>🧩 Riddle:</strong>
-                        <p>Made of adobe, old and wise, standing under desert skies. Centuries old yet strong and bright, I’ve seen day and candlelight. What am I?</p>
-                        <p><em>Answer:</em> A mission on the El Paso Mission Trail!</p>
-                    </div>
-                </div>
-
-                <div id="ep_reward_stop3" class="hidden-content">
-                    <div class="reward-box good">
-                        <strong>🎁 Reward Joke:</strong>
-                        <p>Why don’t old missions gossip? Because they keep everything under <em>adobe</em> control! 😄</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- STOP 4 -->
-            <div class="interactive-box" style="cursor: default;">
-                <strong>🎖️ Stop 4: Fort Bliss</strong>
-                <p class="tiny">History/Culture: A major U.S. Army post that has been important to the region for a long time.</p>
-
-                <div class="choice-grid">
-                    <button class="choice-btn" onclick="answerStop('stop4', true)">✅ Fort Bliss is part of the U.S. Army</button>
-                    <button class="choice-btn" onclick="answerStop('stop4', false)">⚓ It’s a Navy submarine base</button>
-                    <button class="choice-btn" onclick="answerStop('stop4', false)">🚁 It’s a spaceport</button>
-                </div>
-
-                <button onclick="toggleContent('ep_riddle4')">Reveal Riddle</button>
-                <div id="ep_riddle4" class="hidden-content">
-                    <div class="reward-box">
-                        <strong>🧩 Riddle:</strong>
-                        <p>I guard the land with boots and might, training soldiers day and night. In desert heat I proudly stand, protecting this great Texas land. What am I?</p>
-                        <p><em>Answer:</em> Fort Bliss!</p>
-                    </div>
-                </div>
-
-                <div id="ep_reward_stop4" class="hidden-content">
-                    <div class="reward-box good">
-                        <strong>🎁 Reward Joke:</strong>
-                        <p>Why do soldiers at Fort Bliss love math? Because they know how to <em>count</em> on each other! 🇺🇸</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- STOP 5 -->
-            <div class="interactive-box" style="cursor: default;">
-                <strong>🎨 Stop 5: El Paso Museum of Art</strong>
-                <p class="tiny">History/Culture: A place to explore art and stories from different times and cultures.</p>
-
-                <div class="choice-grid">
-                    <button class="choice-btn" onclick="answerStop('stop5', true)">✅ Paintings and sculptures</button>
-                    <button class="choice-btn" onclick="answerStop('stop5', false)">🦖 Dinosaurs</button>
-                    <button class="choice-btn" onclick="answerStop('stop5', false)">🎢 Roller coasters</button>
-                </div>
-
-                <button onclick="toggleContent('ep_riddle5')">Reveal Riddle</button>
-                <div id="ep_riddle5" class="hidden-content">
-                    <div class="reward-box">
-                        <strong>🧩 Riddle:</strong>
-                        <p>Colors splash upon the wall, big and tiny, short and tall. Stories told without a sound, in quiet halls they can be found. What am I?</p>
-                        <p><em>Answer:</em> An art museum!</p>
-                    </div>
-                </div>
-
-                <div id="ep_reward_stop5" class="hidden-content">
-                    <div class="reward-box good">
-                        <strong>🎁 Reward Joke:</strong>
-                        <p>Why did the painting go to school? Because it wanted to <em>draw</em> attention! 🎨</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="interactive-box" style="cursor: default;">
-                <strong>🌮 Bonus Round: Borderland Culture</strong>
-                <p class="tiny">For extra points (and extra giggles)!</p>
-
-                <div class="choice-grid">
-                    <button class="choice-btn" onclick="bonus('bonus1')">🌶️ Name a favorite El Paso-style food (tacos, enchiladas, tamales, burritos…)</button>
-                    <button class="choice-btn" onclick="bonus('bonus2')">🌵 Solve: “I have spines but I’m not a porcupine…” (Answer: cactus)</button>
-                </div>
-
-                <div id="ep_bonus_rewards" class="hidden-content">
-                    <div class="reward-box good">
-                        <strong>🎁 Bonus Reward:</strong>
-                        <p>What do you call a taco that tells jokes? A <em>pun</em>-chita! 🌮😄</p>
-                        <p class="tiny">(+1 point for trying, +2 if everyone laughs!)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <script>
+<div class="section" id="elpaso-game">
+<h2><span class="icon">🧩</span> My City Explorer Game Mode</h2>
+<p>Turn navigation into a gentle adventure. Play with a parent, helper, teacher, or on your own. Answer simple questions, use visual clues, and unlock jokes + badges.</p>
+<div class="game-header">
+<div class="score-pill">🏆 Points: <span id="ep_points">0</span></div>
+<div class="mode-pill">
+<span>Support:</span>
+<label><input checked="" name="ep_mode" onchange="setMode(this.value)" type="radio" value="family"/> 🤝 With Helper</label>
+<label><input name="ep_mode" onchange="setMode(this.value)" type="radio" value="solo"/> ⭐ Independent</label>
+</div>
+<div class="reset-row">
+<button onclick="showAllAnswersHint()">Hint (kid-safe)</button>
+<button onclick="resetElPasoGame()">Reset Adventure</button>
+</div>
+</div>
+<div class="small-note" style="background:#eef8ee; border-color:#9ad29a;">
+<strong>🪴 Adaptive Play Ideas:</strong>
+<div class="tiny">Use first-then language, offer two choices at a time, let the child sit while answering, and turn off hover pressure by reading each option slowly. You can also use this indoors with a printed map or picture map.</div>
+</div>
+<div class="small-note">
+<strong>🧭 Optional Compass Challenge:</strong>
+<div class="tiny">Have a trusted adult pick a safe object (tree, bench, sign) and say a bearing like 60°. The child can turn slowly, match the direction, and then read the next clue. Walking is optional.</div>
+</div>
+<h3 style="margin-top:15px;">🎖️ Badge Board</h3>
+<div class="badge-board" id="ep_badges"></div>
+<!-- STOP 1 -->
+<div class="interactive-box" style="cursor: default;">
+<strong>🏞️ Stop 1: Hill, Ridge, or Big Park</strong>
+<p class="tiny">Place clue: This could be a hill, ridge, trail area, nature center, or big park in your own city.</p>
+<div class="choice-grid">
+<button class="choice-btn" onclick="answerStop('stop1', true)">✅ A natural place with trails, views, or open space</button>
+<button class="choice-btn" onclick="answerStop('stop1', false)">🌋 A volcano</button>
+<button class="choice-btn" onclick="answerStop('stop1', false)">🏝️ A sand dune</button>
+</div>
+<button onclick="toggleContent('ep_riddle1')">Reveal Riddle</button>
+<div class="hidden-content" id="ep_riddle1">
+<div class="reward-box">
+<strong>🧩 Riddle:</strong>
+<p>I rise above the desert floor, with rocky trails and views galore. In my city I stand up high, with trails or views beneath the sky. I help explorers look around. What am I?</p>
+<p><em>Answer:</em> A hill, ridge, or big park!</p>
+</div>
+</div>
+<div class="hidden-content" id="ep_reward_stop1">
+<div class="reward-box good">
+<strong>🎁 Reward Joke:</strong>
+<p>Why do explorers like hills? Because they help you get the <em>big picture</em>! 😄</p>
+</div>
+</div>
+</div>
+<!-- STOP 2 -->
+<div class="interactive-box" style="cursor: default;">
+<strong>💧 Stop 2: River, Creek, or Lake</strong>
+<p class="tiny">Place clue: Many cities have water nearby, like a river, creek, lake, pond, or canal.</p>
+<div class="choice-grid">
+<button class="choice-btn" onclick="answerStop('stop2', true)">✅ Water can be a strong map clue because it is easy to spot</button>
+<button class="choice-btn" onclick="answerStop('stop2', false)">🚀 Water is always a road</button>
+<button class="choice-btn" onclick="answerStop('stop2', false)">💙 Water only matters at the beach</button>
+</div>
+<button onclick="toggleContent('ep_riddle2')">Reveal Riddle</button>
+<div class="hidden-content" id="ep_riddle2">
+<div class="reward-box">
+<strong>🧩 Riddle:</strong>
+<p>I may flow, sparkle, or stay still. On maps I help you know where you are. What am I?</p>
+<p><em>Answer:</em> A river, creek, lake, or other water place!</p>
+</div>
+</div>
+<div class="hidden-content" id="ep_reward_stop2">
+<div class="reward-box good">
+<strong>🎁 Reward Joke:</strong>
+<p>Why did the water clue help the explorer? Because it made the answer <em>flow</em>! 🌊</p>
+</div>
+</div>
+</div>
+<!-- STOP 3 -->
+<div class="interactive-box" style="cursor: default;">
+<strong>🏛️ Stop 3: Historic Place or Community Landmark</strong>
+<p class="tiny">Place clue: Every city has old buildings, landmarks, memorials, or important gathering places.</p>
+<div class="choice-grid">
+<button class="choice-btn" onclick="answerStop('stop3', true)">✅ Old buildings and landmarks can help tell the story of a place</button>
+<button class="choice-btn" onclick="answerStop('stop3', false)">🏰 It was built as a castle</button>
+<button class="choice-btn" onclick="answerStop('stop3', false)">🛰️ It started as a space station</button>
+</div>
+<button onclick="toggleContent('ep_riddle3')">Reveal Riddle</button>
+<div class="hidden-content" id="ep_riddle3">
+<div class="reward-box">
+<strong>🧩 Riddle:</strong>
+<p>I am old, important, and people remember me. I might be a church, station, memorial, hall, or town landmark. What am I?</p>
+<p><em>Answer:</em> A historic place or community landmark!</p>
+</div>
+</div>
+<div class="hidden-content" id="ep_reward_stop3">
+<div class="reward-box good">
+<strong>🎁 Reward Joke:</strong>
+<p>Why are old landmarks good listeners? Because they have heard stories for a long, long time! 😄</p>
+</div>
+</div>
+</div>
+<!-- STOP 4 -->
+<div class="interactive-box" style="cursor: default;">
+<strong>🧑‍🚒 Stop 4: Community Helper Place</strong>
+<p class="tiny">Place clue: Look for a place where helpers work, like a fire station, police station, clinic, post office, or school.</p>
+<div class="choice-grid">
+<button class="choice-btn" onclick="answerStop('stop4', true)">✅ Community helper places support people and keep communities running</button>
+<button class="choice-btn" onclick="answerStop('stop4', false)">⚓ It is only for boats</button>
+<button class="choice-btn" onclick="answerStop('stop4', false)">🚁 It is only for rockets</button>
+</div>
+<button onclick="toggleContent('ep_riddle4')">Reveal Riddle</button>
+<div class="hidden-content" id="ep_riddle4">
+<div class="reward-box">
+<strong>🧩 Riddle:</strong>
+<p>People come here to help, serve, protect, heal, teach, or deliver. What kind of place might this be?</p>
+<p><em>Answer:</em> A community helper place!</p>
+</div>
+</div>
+<div class="hidden-content" id="ep_reward_stop4">
+<div class="reward-box good">
+<strong>🎁 Reward Joke:</strong>
+<p>Why do helpers make good teammates? Because you can always <em>count</em> on them! 😊</p>
+</div>
+</div>
+</div>
+<!-- STOP 5 -->
+<div class="interactive-box" style="cursor: default;">
+<strong>🎨 Stop 5: Art, Library, or Learning Place</strong>
+<p class="tiny">Place clue: This could be a library, museum, art center, nature center, or other learning place in your city.</p>
+<div class="choice-grid">
+<button class="choice-btn" onclick="answerStop('stop5', true)">✅ Paintings and sculptures</button>
+<button class="choice-btn" onclick="answerStop('stop5', false)">🦖 Dinosaurs</button>
+<button class="choice-btn" onclick="answerStop('stop5', false)">🎢 Roller coasters</button>
+</div>
+<button onclick="toggleContent('ep_riddle5')">Reveal Riddle</button>
+<div class="hidden-content" id="ep_riddle5">
+<div class="reward-box">
+<strong>🧩 Riddle:</strong>
+<p>Colors splash upon the wall, big and tiny, short and tall. Stories told without a sound, in quiet halls they can be found. What am I?</p>
+<p><em>Answer:</em> An art museum!</p>
+</div>
+</div>
+<div class="hidden-content" id="ep_reward_stop5">
+<div class="reward-box good">
+<strong>🎁 Reward Joke:</strong>
+<p>Why did the art clue help the explorer? Because it really knew how to <em>draw</em> attention! 🎨</p>
+</div>
+</div>
+</div>
+<div class="interactive-box" style="cursor: default;">
+<strong>🌟 Bonus Round: My City &amp; My Neighborhood</strong>
+<p class="tiny">For extra points, conversation practice, and extra giggles!</p>
+<div class="choice-grid">
+<button class="choice-btn" onclick="bonus('bonus1')">🍎 Name a favorite local food, snack, park, place, or family tradition</button>
+<button class="choice-btn" onclick="bonus('bonus2')">🗺️ Name one clue that helps you remember your city: water, hill, library, school, bridge, mural, or playground</button>
+</div>
+<div class="hidden-content" id="ep_bonus_rewards">
+<div class="reward-box good">
+<strong>🎁 Bonus Reward:</strong>
+<p>What do you call a map that tells jokes? A <em>pun</em>orama! 🗺️😄</p>
+<p class="tiny">(+1 point for trying, +2 if everyone laughs!)</p>
+</div>
+</div>
+</div>
+</div>
+<script>
         let rotation = 0;
         
         function rotateCompass() {
@@ -972,7 +545,7 @@
         }
         
         // --- El Paso Explorer Game logic ---
-        const EP_STORAGE_KEY = 'elpaso_explorer_game_v1';
+        const EP_STORAGE_KEY = 'city_explorer_game_v1';
         let epState = {
             points: 0,
             mode: 'family',
@@ -984,11 +557,11 @@
                 stop5: false
             },
             badges: {
-                stop1: { name: 'Mountain Master', icon: '🏔️', unlocked: false },
-                stop2: { name: 'River Ranger', icon: '🌊', unlocked: false },
-                stop3: { name: 'Mission Explorer', icon: '⛪', unlocked: false },
-                stop4: { name: 'Desert Defender', icon: '🎖️', unlocked: false },
-                stop5: { name: 'Art Adventurer', icon: '🎨', unlocked: false }
+                stop1: { name: 'Nature Navigator', icon: '🏞️', unlocked: false },
+                stop2: { name: 'Water Watcher', icon: '💧', unlocked: false },
+                stop3: { name: 'Landmark Explorer', icon: '🏛️', unlocked: false },
+                stop4: { name: 'Helper Finder', icon: '🧑‍🚒', unlocked: false },
+                stop5: { name: 'Learning Place Finder', icon: '🎨', unlocked: false }
             }
         };
 
@@ -1027,8 +600,8 @@
             saveElPasoGame();
             if (!silent) {
                 const msg = (mode === 'family')
-                    ? 'Family Team mode! Take turns reading clues and using the compass.'
-                    : 'Solo mode! You can play by yourself—great job being an explorer!';
+                    ? 'Helper mode! Take turns reading clues, pointing, and using the compass.'
+                    : 'Independent mode! Go at your own pace and ask for help anytime.';
                 quickToast(msg);
             }
         }
@@ -1108,12 +681,12 @@
         function checkForWin() {
             const allSolved = Object.values(epState.solved).every(v => v);
             if (allSolved) {
-                quickToast('🏅 You did it! Official Borderland Explorer of El Paso!');
+                quickToast('🏅 You did it! Official City Explorer!');
             }
         }
 
         function resetElPasoGame() {
-            if (!confirm('Reset El Paso Explorer Game progress?')) return;
+            if (!confirm('Reset City Explorer adventure progress?')) return;
             localStorage.removeItem(EP_STORAGE_KEY);
             epState.points = 0;
             Object.keys(epState.solved).forEach(k => epState.solved[k] = false);
@@ -1127,7 +700,7 @@
             });
             const bonusEl = document.getElementById('ep_bonus_rewards');
             if (bonusEl) bonusEl.classList.remove('show');
-            quickToast('Game reset! Ready for a new adventure. 🧭');
+            quickToast('Adventure reset! Ready for a new exploration. 🧭');
         }
 
         function showAllAnswersHint() {
